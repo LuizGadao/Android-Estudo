@@ -28,6 +28,12 @@
             android:name=".ui.MyViewPager"
             android:label="@string/title_activity_view_pager" >
         </activity>
+        <activity
+            android:name=".contentprovider.ContentProviderGetContacts"
+            android:label="@string/title_activity_content_provider_get_contacts" >
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
 </manifest>

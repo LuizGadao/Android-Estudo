@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.luizgadao.androidestudos.contentprovider.ContentProviderGetContacts;
 import com.luizgadao.androidestudos.ui.MyGallery;
 import com.luizgadao.androidestudos.ui.MyGalleryWithImageSwitcher;
 import com.luizgadao.androidestudos.ui.MyViewPager;
@@ -29,8 +30,9 @@ public class MainActivity extends ActionBarActivity {
         classes.add( MyGallery.class );
         classes.add( MyGalleryWithImageSwitcher.class );
         classes.add( MyViewPager.class );
+        classes.add(ContentProviderGetContacts.class );
 
-        String[] activitiesName = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager"};
+        String[] activitiesName = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>( getBaseContext(), android.R.layout.simple_list_item_1, activitiesName );
 
         ListView listView = (ListView) findViewById( R.id.listview );
