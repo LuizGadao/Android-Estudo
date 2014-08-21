@@ -9,5 +9,6 @@
     <string name="title_activity_view_pager">ViewPager</string>
     <string name="title_activity_content_provider_get_contacts">ContentProviderGetContacts</string>
     <string name="title_activity_take_photo">TakePhoto</string>
+    <string name="title_activity_my_spinner">MySpinner</string>
 
 </resources>

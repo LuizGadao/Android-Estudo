@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="carros">
+        <!--"La Ferrari", "Bugatti Veyron", "Lamborghini Veneno", "Maserati GT", "McLaren", "Pagani Zonda", "Porche 911"-->
+        <item>La Ferrari</item>
+        <item>Bugatti Veyron</item>
+        <item>Lamborghini Veneno</item>
+        <item>Maserati GT</item>
+        <item>McLaren</item>
+        <item>Pagani Zonda</item>
+        <item>Porche 911</item>
+    </string-array>
+</resources>

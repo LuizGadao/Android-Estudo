@@ -14,6 +14,7 @@ import com.luizgadao.androidestudos.contentprovider.ContentProviderGetContacts;
 import com.luizgadao.androidestudos.media.TakePhoto;
 import com.luizgadao.androidestudos.ui.MyGallery;
 import com.luizgadao.androidestudos.ui.MyGalleryWithImageSwitcher;
+import com.luizgadao.androidestudos.ui.MySpinner;
 import com.luizgadao.androidestudos.ui.MyViewPager;
 
 import java.util.ArrayList;
@@ -33,8 +34,9 @@ public class MainActivity extends ActionBarActivity {
         classes.add( MyViewPager.class );
         classes.add( ContentProviderGetContacts.class );
         classes.add( TakePhoto.class );
+        classes.add( MySpinner.class );
 
-        String[] activitiesName = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts", "Take Photo"};
+        String[] activitiesName = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts", "Take Photo", "Spinner"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>( getBaseContext(), android.R.layout.simple_list_item_1, activitiesName );
 
         ListView listView = (ListView) findViewById( R.id.listview );

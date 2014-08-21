@@ -36,6 +36,10 @@
             android:name=".media.TakePhoto"
             android:label="@string/title_activity_take_photo" >
         </activity>
+        <activity
+            android:name=".ui.MySpinner"
+            android:label="@string/title_activity_my_spinner" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
