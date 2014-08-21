@@ -32,8 +32,12 @@
             android:name=".contentprovider.ContentProviderGetContacts"
             android:label="@string/title_activity_content_provider_get_contacts" >
         </activity>
+        <activity
+            android:name=".media.TakePhoto"
+            android:label="@string/title_activity_take_photo" >
+        </activity>
     </application>
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 </manifest>

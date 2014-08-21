@@ -40,6 +40,9 @@ public class ContentProviderGetContacts extends ActionBarActivity {
         Uri contacts = ContactsContract.Contacts.CONTENT_URI;
 
         //Cursor cursor = managedQuery(contacts, null, null, null, null);
+        String[] projection = { ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME,
+                ContactsContract.Contacts.HAS_PHONE_NUMBER };
+
         Cursor cursor = getBaseContext().getContentResolver().query( contacts, null, null,  null, null );
 
         ArrayList<String> names = new ArrayList<String>();
@@ -78,10 +81,10 @@ public class ContentProviderGetContacts extends ActionBarActivity {
     {
         ArrayList<String> phones = new ArrayList<String>();
 
-        Uri phonesURI = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-        String classure = ContactsContract.CommonDataKinds.Phone._ID + "=" + id;
+        Uri phonesURI = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;  //ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+        String query = ContactsContract.CommonDataKinds.Phone._ID + "=" + id;
 
-        Cursor cursor = getBaseContext().getContentResolver().query( phonesURI, null, classure, null, null );
+        Cursor cursor = getBaseContext().getContentResolver().query( phonesURI, null, query, null, null );
 
         try
         {
@@ -91,7 +94,6 @@ public class ContentProviderGetContacts extends ActionBarActivity {
 
                 if (phone != null)
                     phones.add( phone );
-
             }
         }
         finally {
