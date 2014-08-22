@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,9 @@ public class MainActivity extends ActionBarActivity {
         classes.add( ContentProviderGetContacts.class );
         classes.add( TakePhoto.class );
         classes.add( MySpinner.class );
+        classes.add( TestOnSaveInstanceState.class );
 
-        String[] activitiesName = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts", "Take Photo", "Spinner"};
+        String[] activitiesName = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts", "Take Photo", "Spinner", "Teste with OnSaveInstaceState"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>( getBaseContext(), android.R.layout.simple_list_item_1, activitiesName );
 
         ListView listView = (ListView) findViewById( R.id.listview );
@@ -49,6 +52,8 @@ public class MainActivity extends ActionBarActivity {
                 startActivity( intent );
             }
         });
+
+
     }
 
 

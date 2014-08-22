@@ -10,5 +10,6 @@
     <string name="title_activity_content_provider_get_contacts">ContentProviderGetContacts</string>
     <string name="title_activity_take_photo">TakePhoto</string>
     <string name="title_activity_my_spinner">MySpinner</string>
+    <string name="title_activity_test_on_save_instance_state">TestOnSaveInstanceState</string>
 
 </resources>
