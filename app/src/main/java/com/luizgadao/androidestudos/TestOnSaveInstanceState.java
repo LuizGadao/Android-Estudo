@@ -1,5 +1,6 @@
 package com.luizgadao.androidestudos;
 
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -91,8 +92,20 @@ public class TestOnSaveInstanceState extends ActionBarActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        Log.i( TAG, "on-save-instance-state" );
         super.onSaveInstanceState(outState);
 
         outState.putSerializable( ListImgs.Key, new ListImgs( imgs ) );
+    }
+
+    @Override
+    //SETUP IS IN ANDROID MANIFEST TO android:configChanges="orientation|screenSize"
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if ( newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE )
+            Log.i( TAG, "onConfigurationChanged to: " + "landscape" );
+        else
+            Log.i( TAG, "onConfigurationChanged to: " + "portrait" );
+
     }
 }

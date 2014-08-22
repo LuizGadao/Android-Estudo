@@ -42,7 +42,8 @@
         </activity>
         <activity
             android:name=".TestOnSaveInstanceState"
-            android:label="@string/title_activity_test_on_save_instance_state" >
+            android:label="@string/title_activity_test_on_save_instance_state"
+            android:configChanges="orientation|screenSize">
         </activity>
     </application>
 
