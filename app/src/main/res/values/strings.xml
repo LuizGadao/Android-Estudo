@@ -11,5 +11,7 @@
     <string name="title_activity_take_photo">TakePhoto</string>
     <string name="title_activity_my_spinner">MySpinner</string>
     <string name="title_activity_test_on_save_instance_state">TestOnSaveInstanceState</string>
+    <string name="title_activity_my_custom_view">MyCustomView</string>
+    <string name="title_activity_my_custom_view2">MyCustomView2</string>
 
 </resources>
