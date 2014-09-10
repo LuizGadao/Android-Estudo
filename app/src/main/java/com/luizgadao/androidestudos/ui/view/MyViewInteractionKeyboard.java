@@ -67,7 +67,7 @@ public class MyViewInteractionKeyboard extends View
         rect = new Rect( x, y, x + value50, y + value50 );
         canvas.drawRect( rect, blue );
         canvas.drawCircle( value100, value100, MeasuresUtils.dipToPixel( 20 ), red );
-        canvas.drawLine( x, y, value100, value100, black );
+        canvas.drawLine( (int) (x + (value50 * 0.5)) , (int) (y + (value50 * 0.5)), value100, value100, black );
     }
 
     @Override

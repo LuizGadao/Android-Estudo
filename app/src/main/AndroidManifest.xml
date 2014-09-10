@@ -62,9 +62,64 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.luizgadao.androidestudos.MainActivity" />
         </activity>
+
+        <receiver
+            android:name=".receiver.MyReceiver1"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="DO_SOMETHING" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- run when OS start and finish boot -->
+        <receiver
+            android:name=".receiver.TestBootComplete"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.OpenActivity"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="OPEN_ACTIVITY_TEST" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- setup for api java -->
+        <receiver android:name=".receiver.ReceiverAPI" />
+
+        <activity
+            android:name=".receiver.OpenOtherApp"
+            android:label="@string/title_activity_open_other_app"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luizgadao.androidestudos.MainActivity" />
+        </activity>
+        <activity
+            android:name=".notification.CreateNotification"
+            android:label="@string/title_activity_create_notification"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luizgadao.androidestudos.MainActivity" />
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>
