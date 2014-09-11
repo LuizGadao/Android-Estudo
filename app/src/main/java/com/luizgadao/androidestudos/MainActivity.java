@@ -1,5 +1,6 @@
 package com.luizgadao.androidestudos;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import com.luizgadao.androidestudos.notification.CreateNotification;
 import com.luizgadao.androidestudos.receiver.MyReceiver1;
 import com.luizgadao.androidestudos.receiver.OpenOtherApp;
 import com.luizgadao.androidestudos.receiver.ReceiverAPI;
+import com.luizgadao.androidestudos.service.ServiceWithBind;
+import com.luizgadao.androidestudos.service.TestService1;
 import com.luizgadao.androidestudos.ui.MyGallery;
 import com.luizgadao.androidestudos.ui.MyGalleryWithImageSwitcher;
 import com.luizgadao.androidestudos.ui.MySpinner;
@@ -31,14 +34,13 @@ import java.util.Collections;
 public class MainActivity extends ActionBarActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private BroadcastReceiver receiverAPI;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //register Broadcast by API
-        registerReceiver( new ReceiverAPI(), new IntentFilter("RECEIVER_API") );
 
         final ArrayList<Class> classes = new ArrayList<Class>();
         classes.add( MyGallery.class );
@@ -52,8 +54,12 @@ public class MainActivity extends ActionBarActivity {
         classes.add( MyCustomView2.class );
         classes.add( ReceiverAPI.class );
         classes.add( MyReceiver1.class );
-        classes.add(OpenOtherApp.class);
-        classes.add(CreateNotification.class);
+        classes.add( OpenOtherApp.class );
+        classes.add( CreateNotification.class );
+        classes.add( TestService1.class );
+        classes.add( ServiceWithBind.class );
+
+
         Collections.reverse( classes );
 
         final ArrayList<String> activitiesName = new ArrayList<String>(); // = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts", "Take Photo", "Spinner", "Teste with OnSaveInstaceState"};
@@ -77,8 +83,11 @@ public class MainActivity extends ActionBarActivity {
                 //verify if class is a Receiver
                 if ( ! classes.get(position).getSimpleName().toLowerCase().contains("receiver") )
                     initActivity( classes.get(position) );
-                else if ( classes.get( position ) == ReceiverAPI.class )
-                    sendBroadcast( new Intent( "RECEIVER_API" ) );
+                else if ( classes.get( position ) == ReceiverAPI.class ) {
+                    //register Broadcast by API
+                    registerReceiver( receiverAPI, new IntentFilter("RECEIVER_API") );
+                    sendBroadcast(new Intent("RECEIVER_API"));
+                }
                 else if ( classes.get( position ) == MyReceiver1.class )
                     sendBroadcast( new Intent( "DO_SOMETHING" ) );
             }
@@ -87,7 +96,7 @@ public class MainActivity extends ActionBarActivity {
         //automate start my activity for test
         //initActivity( classes.get( classes.size()-1 ) );
         //dispach event
-        int lastItemInsert = classes.size()-1;
+        int lastItemInsert = 0;//classes.size()-1;
         listView.performItemClick( adapter.getView(lastItemInsert, null, null), lastItemInsert, adapter.getItemId( lastItemInsert )  );
     }
 
@@ -119,8 +128,9 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        if ( receiverAPI != null )
+            unregisterReceiver( receiverAPI );
 
-        unregisterReceiver( new ReceiverAPI() );
+        super.onDestroy();
     }
 }

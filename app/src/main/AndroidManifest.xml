@@ -78,7 +78,8 @@
         <receiver
             android:name=".receiver.TestBootComplete"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true"
+            android:permission="android.intent.action.BOOT_COMPLETED" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
 
@@ -110,6 +111,46 @@
         <activity
             android:name=".notification.CreateNotification"
             android:label="@string/title_activity_create_notification"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luizgadao.androidestudos.MainActivity" />
+        </activity>
+
+        <service
+            android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="SERVICE_1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".service.TestService1"
+            android:label="@string/title_activity_test_service1"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luizgadao.androidestudos.MainActivity" />
+        </activity>
+
+        <service
+            android:name=".service.MyServiceConnection"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="SERVICE_CONNECTION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".service.ServiceWithBind"
+            android:label="@string/title_activity_service_with_bind"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
