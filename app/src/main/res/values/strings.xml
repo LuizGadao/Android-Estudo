@@ -22,5 +22,6 @@
     <string name="title_activity_create_notification">CreateNotification</string>
     <string name="title_activity_test_service1">TestService1</string>
     <string name="title_activity_service_with_bind">ServiceWithBind</string>
+    <string name="title_activity_test_service_intent">TestServiceIntent</string>
 
 </resources>

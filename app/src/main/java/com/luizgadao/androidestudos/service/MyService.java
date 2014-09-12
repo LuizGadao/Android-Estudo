@@ -34,15 +34,15 @@ public class MyService extends Service implements Runnable {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.i( LOG_TAG, "onStartCommand-service" );
+        Log.i( LOG_TAG, "onStartCommand-service startID: " + startId );
         // se o android fechar esse serviço, não é para ele reinicia-lo o memso.
         //return START_NOT_STICKY;
 
-        //se o android fechar esse serviço, quando tiver recurso disponivel ele deve inicia-lo novamente. Valor da intent e nulo.
+        //se o android fechar esse serviço, quando tiver recurso disponivel ele deve inicia-lo novamente. So que o valor da intent é nulo.
         //return START_STICKY;
 
-        //se o android fechar esse serviço, quando tiver recurso disponivel ele deve inicia-lo novamente. Valor da é o mesmo enviado para reiniciar o serviço.
-        return START_REDELIVER_INTENT;
+        //se o android fechar esse serviço, quando tiver recurso disponivel ele deve inicia-lo novamente. Valor da Intent é o mesmo enviado para reiniciar o serviço.
+        return START_NOT_STICKY;
 
         //return super.onStartCommand(intent, flags, startId);
     }

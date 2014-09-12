@@ -6,9 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.luizgadao.androidestudos.receiver.CountListener;
-
-public class MyServiceConnection extends Service implements CountListener {
+public class MyServiceConnection extends Service {
 
     private static final String LOG_TAG = MyServiceConnection.class.getSimpleName();
 
@@ -20,6 +18,7 @@ public class MyServiceConnection extends Service implements CountListener {
     public MyServiceConnection() {
     }
 
+    // o retorno precisa ser um obj que extends "Binder"
     @Override
     public IBinder onBind(Intent intent) {
         return controller;
@@ -30,7 +29,7 @@ public class MyServiceConnection extends Service implements CountListener {
 
         super.onCreate();
         Log.i( LOG_TAG, "on-create" );
-        setThread();
+        //setThread();
     }
 
     @Override
@@ -70,14 +69,14 @@ public class MyServiceConnection extends Service implements CountListener {
         }.start();
     }
 
-    @Override
     public int getCount() {
         return count;
     }
 
     public class Controller extends Binder
     {
-        public CountListener getCountListener(){
+        //métod que vai retornar o Serviço implementado
+        public MyServiceConnection getService(){
             return MyServiceConnection.this;
         }
     }
