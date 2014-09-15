@@ -52,7 +52,7 @@ public class MyIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent)
     {
-        while( count < 5 && enable )
+        while( count < 100 && enable )
         {
             try {
                 Thread.sleep( 1000 );

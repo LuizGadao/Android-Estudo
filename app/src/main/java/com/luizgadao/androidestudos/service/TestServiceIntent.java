@@ -24,6 +24,7 @@ public class TestServiceIntent extends ActionBarActivity implements ServiceConne
         setContentView(R.layout.activity_test_service_intent);
 
         intentService = new Intent( "SERVICE_INTENT" );
+        bindService( intentService, this, BIND_AUTO_CREATE );
     }
 
 
@@ -44,7 +45,10 @@ public class TestServiceIntent extends ActionBarActivity implements ServiceConne
 
     public void getCount( View view )
     {
-        Toast.makeText(getBaseContext(), "Count: " + controller.getMyIntentService().getCount(), Toast.LENGTH_SHORT).show();
+        if ( controller != null )
+            Toast.makeText(getBaseContext(), "Count: " + controller.getMyIntentService().getCount(), Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getBaseContext(), "Ainda não foi iniciado o serviço.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
