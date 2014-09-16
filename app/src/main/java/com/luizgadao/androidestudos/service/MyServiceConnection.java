@@ -6,6 +6,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.luizgadao.androidestudos.utils.LogUtils;
+
 public class MyServiceConnection extends Service {
 
     private static final String LOG_TAG = MyServiceConnection.class.getSimpleName();
@@ -29,9 +31,10 @@ public class MyServiceConnection extends Service {
 
         super.onCreate();
         Log.i( LOG_TAG, "on-create" );
-        //setThread();
+        setThread();
     }
 
+    /* So entra no aqui se chamar o métod startService() */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i( LOG_TAG, "onStartCommand -- startID: " + startId );
@@ -41,6 +44,7 @@ public class MyServiceConnection extends Service {
 
     @Override
     public void onDestroy() {
+        LogUtils.info( LOG_TAG, "on-destroy" );
         super.onDestroy();
 
         habilitado = false;
@@ -52,7 +56,7 @@ public class MyServiceConnection extends Service {
             @Override
             public void run() {
 
-                while ( habilitado && count < 100 )
+                while ( habilitado && count < 60 )
                 {
                     try {
                         Thread.sleep( 1000 );
@@ -72,6 +76,8 @@ public class MyServiceConnection extends Service {
     public int getCount() {
         return count;
     }
+
+    public boolean getEnable(){ return habilitado; }
 
     public class Controller extends Binder
     {

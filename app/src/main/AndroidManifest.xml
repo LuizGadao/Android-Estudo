@@ -79,7 +79,7 @@
                 android:value="com.luizgadao.androidestudos.MainActivity" />
         </activity>
         <activity
-            android:name=".service.TestService1"
+            android:name=".service.TestMyService"
             android:label="@string/title_activity_test_service1"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -87,7 +87,7 @@
                 android:value="com.luizgadao.androidestudos.MainActivity" />
         </activity>
         <activity
-            android:name=".service.ServiceWithBind"
+            android:name=".service.TestServiceConnectionWithBind"
             android:label="@string/title_activity_service_with_bind"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -96,7 +96,7 @@
         </activity>
 
         <activity
-            android:name=".service.TestServiceIntent"
+            android:name=".service.TestIntentService"
             android:label="@string/title_activity_test_service_intent"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -146,7 +146,7 @@
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
-                <action android:name="SERVICE_1" />
+                <action android:name="MY_SERVICE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

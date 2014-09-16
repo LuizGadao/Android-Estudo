@@ -18,9 +18,9 @@ import com.luizgadao.androidestudos.notification.CreateNotification;
 import com.luizgadao.androidestudos.receiver.MyReceiver1;
 import com.luizgadao.androidestudos.receiver.OpenOtherApp;
 import com.luizgadao.androidestudos.receiver.ReceiverAPI;
-import com.luizgadao.androidestudos.service.ServiceWithBind;
-import com.luizgadao.androidestudos.service.TestService1;
-import com.luizgadao.androidestudos.service.TestServiceIntent;
+import com.luizgadao.androidestudos.service.TestIntentService;
+import com.luizgadao.androidestudos.service.TestServiceConnectionWithBind;
+import com.luizgadao.androidestudos.service.TestMyService;
 import com.luizgadao.androidestudos.ui.MyGallery;
 import com.luizgadao.androidestudos.ui.MyGalleryWithImageSwitcher;
 import com.luizgadao.androidestudos.ui.MySpinner;
@@ -57,9 +57,9 @@ public class MainActivity extends ActionBarActivity {
         classes.add( MyReceiver1.class );
         classes.add( OpenOtherApp.class );
         classes.add( CreateNotification.class );
-        classes.add( TestService1.class );
-        classes.add( ServiceWithBind.class );
-        classes.add( TestServiceIntent.class );
+        classes.add( TestMyService.class );
+        classes.add( TestServiceConnectionWithBind.class );
+        classes.add( TestIntentService.class );
 
 
 

@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.luizgadao.androidestudos.R;
 
-public class TestService1 extends ActionBarActivity {
+public class TestMyService extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class TestService1 extends ActionBarActivity {
         setContentView(R.layout.activity_test_service1);
 
 
-        final Intent intentService = new Intent("SERVICE_1");
+        final Intent intentService = new Intent("MY_SERVICE");
 
         Button btStart = (Button) findViewById( R.id.bt_start_service );
         Button btStop = (Button) findViewById( R.id.bt_stop_service );

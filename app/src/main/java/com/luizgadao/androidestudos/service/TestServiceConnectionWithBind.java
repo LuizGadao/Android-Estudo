@@ -13,9 +13,9 @@ import android.widget.Toast;
 import com.luizgadao.androidestudos.R;
 import com.luizgadao.androidestudos.utils.LogUtils;
 
-public class ServiceWithBind extends ActionBarActivity implements ServiceConnection{
+public class TestServiceConnectionWithBind extends ActionBarActivity implements ServiceConnection{
 
-    private static final String LOG_TAG = ServiceWithBind.class.getSimpleName();
+    private static final String LOG_TAG = TestServiceConnectionWithBind.class.getSimpleName();
 
     private ServiceConnection connection;
     private MyServiceConnection myServiceConnection;
@@ -31,23 +31,22 @@ public class ServiceWithBind extends ActionBarActivity implements ServiceConnect
 
         //Context.BIND_AUTO_CREATE;
         //bindService chama apenas o método onCreate do SERVICE.
-        connection = ServiceWithBind.this;
-
+        connection = this;
         bindService( intentService, connection, Context.BIND_AUTO_CREATE );
     }
 
     public void startService( View view )
     {
         if ( connection == null )
-            connection = ServiceWithBind.this;
+            connection = TestServiceConnectionWithBind.this;
 
-        startService(intentService);
+        bindService( intentService, connection, Context.BIND_AUTO_CREATE );
     }
 
     public void stopService( View view )
     {
-        stopService(intentService);
-        unbindService(connection);
+        if ( myServiceConnection.getEnable() )
+            unbindService(connection);
     }
 
     public void getCount( View view )
@@ -63,6 +62,7 @@ public class ServiceWithBind extends ActionBarActivity implements ServiceConnect
         //controller.getCount();
     }
 
+    /* não é disparado quando o onDestroy do serviço é chamado.*/
     @Override
     public void onServiceDisconnected(ComponentName componentName) {
         LogUtils.info( LOG_TAG, " - onServiceDisconnected" );
@@ -72,8 +72,10 @@ public class ServiceWithBind extends ActionBarActivity implements ServiceConnect
     protected void onDestroy() {
         super.onDestroy();
 
-        /*
-        if ( connection != null )
-            unbindService( connection ); connection = null; */
+        // verifica se tem conexão com o serviço, e se tiver verifica se ele tá habilitado.
+        // se tiver habilitado desconecta usando o serviço.
+        // Caso não faça isso, gera um erro na linha 35.
+        if ( myServiceConnection != null & myServiceConnection.getEnable() )
+            unbindService( connection );
     }
 }

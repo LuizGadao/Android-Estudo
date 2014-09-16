@@ -19,7 +19,6 @@ public class MyIntentService extends IntentService {
     private static final String LOG_TAG = IntentService.class.getSimpleName();
     private int count = 0;
     private Boolean enable;
-    private Boolean enableAll;
     private Controller controller = new Controller();
 
 
@@ -45,6 +44,7 @@ public class MyIntentService extends IntentService {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         LogUtils.info( LOG_TAG, "on-start-command: " + startId );
+        intent.putExtra("id", startId);
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -52,7 +52,9 @@ public class MyIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent)
     {
-        while( count < 100 && enable )
+        int id = intent.getExtras().getInt( "id" );
+
+        while( count < 10 && enable )
         {
             try {
                 Thread.sleep( 1000 );
@@ -61,7 +63,7 @@ public class MyIntentService extends IntentService {
             }
 
             count++;
-            LogUtils.info( LOG_TAG, "count: " + count );
+            LogUtils.info( LOG_TAG, "startID: " + id + " count: " + count );
         }
 
         count = 0;
@@ -70,6 +72,10 @@ public class MyIntentService extends IntentService {
     public void dissableService(){
         this.enable = false;
         count = 0;
+    }
+
+    public Boolean getEnable(){
+        return enable;
     }
 
     public int getCount(){ return count; }

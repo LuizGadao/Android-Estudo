@@ -12,9 +12,9 @@ import android.widget.Toast;
 import com.luizgadao.androidestudos.R;
 import com.luizgadao.androidestudos.utils.LogUtils;
 
-public class TestServiceIntent extends ActionBarActivity implements ServiceConnection {
+public class TestIntentService extends ActionBarActivity implements ServiceConnection {
 
-    private static final String LOG_TAG = TestServiceIntent.class.getSimpleName();
+    private static final String LOG_TAG = TestIntentService.class.getSimpleName();
     private Intent intentService;
     private MyIntentService.Controller controller;
 
@@ -24,23 +24,22 @@ public class TestServiceIntent extends ActionBarActivity implements ServiceConne
         setContentView(R.layout.activity_test_service_intent);
 
         intentService = new Intent( "SERVICE_INTENT" );
+        startService(intentService);
         bindService( intentService, this, BIND_AUTO_CREATE );
     }
 
 
     public void startService( View view )
     {
-        bindService( intentService, this, BIND_AUTO_CREATE );
         startService(intentService);
+        bindService( intentService, this, BIND_AUTO_CREATE );
     }
 
     public void stopService( View view )
     {
-        //not work
-        //stopService(intentService);
-
-        this.controller.getMyIntentService().dissableService();
         unbindService(this);
+        stopService(intentService);
+        this.controller.getMyIntentService().dissableService();
     }
 
     public void getCount( View view )
@@ -61,5 +60,14 @@ public class TestServiceIntent extends ActionBarActivity implements ServiceConne
     public void onServiceDisconnected(ComponentName componentName)
     {
         LogUtils.info( LOG_TAG, "onServiceDisconnected" );
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        /*é necessário usar o bind-service para desconectar do serviço. Mas, o serviço ainda continua executando.*/
+        if ( controller != null & controller.getMyIntentService().getEnable() )
+            unbindService( this );
     }
 }
