@@ -94,7 +94,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.luizgadao.androidestudos.MainActivity" />
         </activity>
-
         <activity
             android:name=".service.TestIntentService"
             android:label="@string/title_activity_test_service_intent"
@@ -167,11 +166,46 @@
             android:exported="false" >
             <intent-filter>
                 <action android:name="SERVICE_INTENT" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
 
+        <receiver
+            android:name=".alarm.ReceiverAlarm"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="RUN_ALARM" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".alarm.TestReceiveAlarm"
+            android:label="@string/title_activity_test_receiver_alarm"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luizgadao.androidestudos.MainActivity" />
+        </activity>
+        <activity
+            android:name=".alarm.TestReceiveAlarmRepeat"
+            android:label="@string/title_activity_test_receive_alarm_repeat"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luizgadao.androidestudos.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.AcitivityWithSearch"
+            android:label="@string/title_activity_acitivity_with_search"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.luizgadao.androidestudos.MainActivity" />
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />

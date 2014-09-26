@@ -125,7 +125,9 @@ public class NotificationTest {
                         null)
 
                 // Automatically dismiss the notification when it is touched.
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                // use permission android.permission.Vibrate
+                .setVibrate( new long[]{ 100, 200 } );
 
         notify(context, builder.build());
     }

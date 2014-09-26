@@ -24,10 +24,10 @@ public class TestIntentService extends ActionBarActivity implements ServiceConne
         setContentView(R.layout.activity_test_service_intent);
 
         intentService = new Intent( "SERVICE_INTENT" );
-        startService(intentService);
+
+        //ser tiver algum servico rodando em background conecta a ele.
         bindService( intentService, this, BIND_AUTO_CREATE );
     }
-
 
     public void startService( View view )
     {
@@ -37,9 +37,12 @@ public class TestIntentService extends ActionBarActivity implements ServiceConne
 
     public void stopService( View view )
     {
-        unbindService(this);
-        stopService(intentService);
-        this.controller.getMyIntentService().dissableService();
+        if ( this.controller != null & this.controller.getMyIntentService().getEnable()) {
+            unbindService(this);
+            stopService(intentService);
+            //hack for stop service.
+            this.controller.getMyIntentService().dissableService();
+        }
     }
 
     public void getCount( View view )

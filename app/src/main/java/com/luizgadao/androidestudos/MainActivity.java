@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.luizgadao.androidestudos.alarm.TestReceiveAlarm;
+import com.luizgadao.androidestudos.alarm.TestReceiveAlarmRepeat;
 import com.luizgadao.androidestudos.contentprovider.ContentProviderGetContacts;
 import com.luizgadao.androidestudos.media.TakePhoto;
 import com.luizgadao.androidestudos.notification.CreateNotification;
@@ -19,8 +21,9 @@ import com.luizgadao.androidestudos.receiver.MyReceiver1;
 import com.luizgadao.androidestudos.receiver.OpenOtherApp;
 import com.luizgadao.androidestudos.receiver.ReceiverAPI;
 import com.luizgadao.androidestudos.service.TestIntentService;
-import com.luizgadao.androidestudos.service.TestServiceConnectionWithBind;
 import com.luizgadao.androidestudos.service.TestMyService;
+import com.luizgadao.androidestudos.service.TestServiceConnectionWithBind;
+import com.luizgadao.androidestudos.ui.AcitivityWithSearch;
 import com.luizgadao.androidestudos.ui.MyGallery;
 import com.luizgadao.androidestudos.ui.MyGalleryWithImageSwitcher;
 import com.luizgadao.androidestudos.ui.MySpinner;
@@ -36,7 +39,6 @@ public class MainActivity extends ActionBarActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private BroadcastReceiver receiverAPI;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +62,11 @@ public class MainActivity extends ActionBarActivity {
         classes.add( TestMyService.class );
         classes.add( TestServiceConnectionWithBind.class );
         classes.add( TestIntentService.class );
+        classes.add( TestReceiveAlarm.class );
+        classes.add( TestReceiveAlarmRepeat.class );
+        classes.add( AcitivityWithSearch.class );
 
-
-
-        Collections.reverse( classes );
+        Collections.reverse(classes);
 
         final ArrayList<String> activitiesName = new ArrayList<String>(); // = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts", "Take Photo", "Spinner", "Teste with OnSaveInstaceState"};
 
