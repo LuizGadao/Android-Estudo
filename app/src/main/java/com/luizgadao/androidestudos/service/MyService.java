@@ -38,7 +38,7 @@ public class MyService extends Service implements Runnable {
         // se o android fechar esse serviço, não é para ele reinicia-lo o memso.
         //return START_NOT_STICKY;
 
-        //se o android fechar esse serviço, quando tiver recurso disponivel ele deve inicia-lo novamente. So que o valor da intent é nulo.
+        //se o android fechar esse serviço, quando não tiver recurso disponivel ele deve inicia-lo novamente. So que o valor da intent é nulo.
         //return START_STICKY;
 
         //se o android fechar esse serviço, quando tiver recurso disponivel ele deve inicia-lo novamente. Valor da Intent é o mesmo enviado para reiniciar o serviço.

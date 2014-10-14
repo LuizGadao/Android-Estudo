@@ -26,5 +26,6 @@
     <string name="title_activity_test_receiver_alarm">TestReceiverAlarm</string>
     <string name="title_activity_test_receive_alarm_repeat">TestReceiveAlarmRepeat</string>
     <string name="title_activity_acitivity_with_search">AcitivityWithSearch</string>
+    <string name="title_activity_sqlite">SQLite</string>
 
 </resources>

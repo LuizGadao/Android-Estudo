@@ -7,20 +7,13 @@ import android.os.IBinder;
 
 import com.luizgadao.androidestudos.utils.LogUtils;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
+
 public class MyIntentService extends IntentService {
 
     private static final String LOG_TAG = IntentService.class.getSimpleName();
     private int count = 0;
     private Boolean enable;
     private Controller controller = new Controller();
-
 
     public MyIntentService() {
         super("MyIntentService");

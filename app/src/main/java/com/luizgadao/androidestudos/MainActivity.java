@@ -23,6 +23,7 @@ import com.luizgadao.androidestudos.receiver.ReceiverAPI;
 import com.luizgadao.androidestudos.service.TestIntentService;
 import com.luizgadao.androidestudos.service.TestMyService;
 import com.luizgadao.androidestudos.service.TestServiceConnectionWithBind;
+import com.luizgadao.androidestudos.sql_lite.SQLite;
 import com.luizgadao.androidestudos.ui.AcitivityWithSearch;
 import com.luizgadao.androidestudos.ui.MyGallery;
 import com.luizgadao.androidestudos.ui.MyGalleryWithImageSwitcher;
@@ -41,9 +42,9 @@ public class MainActivity extends ActionBarActivity {
     private BroadcastReceiver receiverAPI;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
 
         final ArrayList<Class> classes = new ArrayList<Class>();
         classes.add( MyGallery.class );
@@ -65,71 +66,69 @@ public class MainActivity extends ActionBarActivity {
         classes.add( TestReceiveAlarm.class );
         classes.add( TestReceiveAlarmRepeat.class );
         classes.add( AcitivityWithSearch.class );
+        classes.add( SQLite.class );
 
-        Collections.reverse(classes);
+        Collections.reverse( classes );
 
         final ArrayList<String> activitiesName = new ArrayList<String>(); // = {"Simple Gallery", "Gallery with ImageSwithcer", "View Pager", "Get Contacts", "Take Photo", "Spinner", "Teste with OnSaveInstaceState"};
 
-        for( Class myClass : classes )
-        {
+        for ( Class myClass : classes ) {
             activitiesName.add( myClass.getSimpleName() );
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>( getBaseContext(), android.R.layout.simple_list_item_1, activitiesName );
 
-        ListView listView = (ListView) findViewById( R.id.listview );
-        listView.setAdapter(adapter);
+        ListView listView = ( ListView ) findViewById( R.id.listview );
+        listView.setAdapter( adapter );
 
         listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+            public void onItemClick( AdapterView<?> adapterView, View view, int position, long id ) {
                 //Intent intent = new Intent( getBaseContext(), classes.get(position) );
                 //startActivity( intent );
 
                 //verify if class is a Receiver
-                if ( ! classes.get(position).getSimpleName().toLowerCase().contains("receiver") )
-                    initActivity( classes.get(position) );
+                if ( !classes.get( position ).getSimpleName().toLowerCase().contains( "receiver" ) )
+                    initActivity( classes.get( position ) );
                 else if ( classes.get( position ) == ReceiverAPI.class ) {
                     //register Broadcast by API
-                    registerReceiver( receiverAPI, new IntentFilter("RECEIVER_API") );
-                    sendBroadcast(new Intent("RECEIVER_API"));
-                }
-                else if ( classes.get( position ) == MyReceiver1.class )
+                    registerReceiver( receiverAPI, new IntentFilter( "RECEIVER_API" ) );
+                    sendBroadcast( new Intent( "RECEIVER_API" ) );
+                } else if ( classes.get( position ) == MyReceiver1.class )
                     sendBroadcast( new Intent( "DO_SOMETHING" ) );
             }
-        });
+        } );
 
         //automate start my activity for test
         //initActivity( classes.get( classes.size()-1 ) );
         //dispach event
         int lastItemInsert = 0;//classes.size()-1;
-        listView.performItemClick( adapter.getView(lastItemInsert, null, null), lastItemInsert, adapter.getItemId( lastItemInsert )  );
+        listView.performItemClick( adapter.getView( lastItemInsert, null, null ), lastItemInsert, adapter.getItemId( lastItemInsert ) );
     }
 
-    private void initActivity( Class myClass )
-    {
+    private void initActivity( Class myClass ) {
         Intent intent = new Intent( getBaseContext(), myClass );
         startActivity( intent );
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu( Menu menu ) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate( R.menu.main, menu );
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected( MenuItem item ) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if ( id == R.id.action_settings ) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected( item );
     }
 
     @Override
